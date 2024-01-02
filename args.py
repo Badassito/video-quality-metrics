@@ -9,17 +9,6 @@ overview_mode_args = parser.add_argument_group("Overview Mode Arguments")
 general_args = parser.add_argument_group("General Arguments")
 optional_metrics_args = parser.add_argument_group("Optional Metrics")
 
-# Set AV1 speed/quality ratio
-encoding_args.add_argument(
-    "--av1-cpu-used",
-    type=int,
-    default=5,
-    choices=range(1, 9),
-    metavar="<1-8>",
-    help="Only applicable if the libaom-av1 (AV1) encoder is chosen. Set the quality/encoding speed tradeoff. "
-    "Lower values mean slower encoding but better quality, and vice-versa",
-)
-
 # The length of each clip for Overview Mode.
 overview_mode_args.add_argument(
     "-cl",
@@ -48,7 +37,7 @@ general_args.add_argument(
     "-dp",
     "--decimal-places",
     type=int,
-    default=2,
+    default=4,
     help="The number of decimal places to use for the data in the table",
 )
 
@@ -57,9 +46,9 @@ encoding_args.add_argument(
     "-e",
     "--video-encoder",
     type=str,
-    default="x264",
-    choices=["x264", "x265", "libaom-av1"],
-    help="Specify whether to use the x264 (H.264), x265 (H.265) or libaom-av1 (AV1) encoder",
+    default="svtav1",
+    choices=["x264", "x265", "svtav1"],
+    help="Specify whether to use the x264, x265 or libsvtav1 encoder",
 )
 
 # The time interval for Overview Mode.
@@ -139,6 +128,21 @@ encoding_args.add_argument(
         "veryfast",
         "superfast",
         "ultrafast",
+        "-1"
+        "0"
+        "1",
+	    "2",
+	    "3",
+	    "4",
+    	"5",
+	    "6",
+	    "7",
+    	"8",
+    	"9",
+    	"10",
+	    "11",
+	    "12",
+	    "13",
     ],
     nargs="+",
     metavar="<preset/s>",
@@ -203,4 +207,11 @@ general_args.add_argument(
     type=str,
     help="Add FFmpeg video filter(s). Each filter must be separated by a comma. "
     "Example: -vf bwdif=mode=0,crop=1920:800:0:140",
+)
+
+# FFmpeg Video Filter(s)
+general_args.add_argument(
+    "--svtav1-params",
+    type=str,
+    help="Add SVT-AV1 parameters",
 )
