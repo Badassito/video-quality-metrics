@@ -1,3 +1,5 @@
+FORK NOTES : I have no idea what I'm doing, please refer to whatever the source of a fork is called
+
 # Video Quality Metrics (VQM)
 
 VQM is a command line program that has 2 main features.
