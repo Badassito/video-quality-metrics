@@ -46,12 +46,8 @@ def get_metrics_save_table(
 
             # Calculate the mean, minimum and standard deviation scores across all frames.
             mean_score = force_decimal_places(np.mean(metric_scores), decimal_places)
-            min_score = force_decimal_places(min(metric_scores), decimal_places)
-            std_score = force_decimal_places(np.std(metric_scores), decimal_places)
 
             collected_scores[metric_type] = {
-                "min": min_score,
-                "std": std_score,
                 "mean": mean_score
             }
 
@@ -67,7 +63,7 @@ def get_metrics_save_table(
             )
 
             # Add the <metric_type> values to the table.
-            data_for_current_row.append(f"{min_score} | {std_score} | {mean_score}")
+            data_for_current_row.append(f"{mean_score}")
 
     if not args.no_transcoding_mode:
         data_for_current_row.insert(0, crf_or_preset)
@@ -75,14 +71,8 @@ def get_metrics_save_table(
 
     table.add_row(data_for_current_row)
 
-    collected_metric_types = '/'.join(metrics_list)
-    table_title = (
-        f"{collected_metric_types} values are in the format: Min | Standard Deviation | Mean"
-    )
-
     # Write the table to the Table.txt file.
     with open(comparison_table, "w") as f:
-        f.write(f"{table_title}\n")
         f.write(table.get_string())
 
     log.info(f"{comparison_table} has been updated.")

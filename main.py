@@ -113,8 +113,8 @@ if not args.no_transcoding_mode:
         crf = "23"
     elif video_encoder == "x265":
         crf = "28"
-    elif video_encoder == "libaom-av1":
-        crf = "32"
+    elif video_encoder == "svtav1":
+        crf = "26"
 
     # CRF comparison mode.
     if is_list(args.crf) and len(args.crf) > 1:
@@ -155,7 +155,7 @@ if not args.no_transcoding_mode:
                 duration,
             )
 
-            transcode_size = os.path.getsize(transcode_output_path) / 1_000_000
+            transcode_size = os.path.getsize(transcode_output_path) / 1_048_576
             transcoded_bitrate = provider.get_bitrate(args.decimal_places, transcode_output_path)
             size_rounded = force_decimal_places(transcode_size, args.decimal_places)
             data_for_current_row = [f"{size_rounded} MB", transcoded_bitrate]
@@ -241,7 +241,7 @@ if not args.no_transcoding_mode:
                 duration,
             )
 
-            transcode_size = os.path.getsize(transcode_output_path) / 1_000_000
+            transcode_size = os.path.getsize(transcode_output_path) / 1_048_576
             transcoded_bitrate = provider.get_bitrate(args.decimal_places, transcode_output_path)
             size_rounded = force_decimal_places(transcode_size, args.decimal_places)
             data_for_current_row = [f"{size_rounded} MB", transcoded_bitrate]
@@ -317,7 +317,7 @@ else:
         duration,
     )
 
-    transcode_size = os.path.getsize(args.transcoded_video_path) / 1_000_000
+    transcode_size = os.path.getsize(args.transcoded_video_path) / 1_048_576
     size_rounded = force_decimal_places(transcode_size, args.decimal_places)
     transcoded_bitrate = provider.get_bitrate(args.decimal_places, args.transcoded_video_path)
     data_for_current_row = [f"{size_rounded} MB", transcoded_bitrate]

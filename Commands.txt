@@ -1,0 +1,3 @@
+python main.py --original-video-path "k.mkv" --video-encoder libsvtav1 -crf 11 14 17 20 23 26 --interval 60 --clip-length 1 --preset 7 -psnr --show-commands
+
+python main.py --original-video-path "k.mp4" --video-encoder libsvtav1 -crf 11 14 17 20 23 26 --interval 600 --clip-length 1 --preset 8 -psnr --show-commands

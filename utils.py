@@ -191,12 +191,7 @@ def show_progress_bar(ffmpeg_process, total_frames):
 def write_table_info(table_path, video_filename, original_bitrate, args, crf_or_preset):
     with open(table_path, "a") as f:
         f.write(
-            f"\nFile Transcoded: {video_filename}\n"
-            f"Bitrate: {original_bitrate}\n"
-            f"Encoder used for the transcodes: {args.video_encoder}\n"
-            f"{crf_or_preset} was used.\n"
-            f'Filter(s) used: {"None" if not args.video_filters else args.video_filters}\n'
-            f"n_subsample: {args.subsample}"
+            f"\nn_subsample: {args.subsample}"
         )
 
 def get_metrics_list(args):

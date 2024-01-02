@@ -47,7 +47,7 @@ encoding_args.add_argument(
     "--video-encoder",
     type=str,
     default="svtav1",
-    choices=["x264", "x265", "svtav1"],
+    choices=["libx264", "libx265", "libsvtav1"],
     help="Specify whether to use the x264, x265 or libsvtav1 encoder",
 )
 
@@ -131,18 +131,18 @@ encoding_args.add_argument(
         "-1"
         "0"
         "1",
-	    "2",
-	    "3",
-	    "4",
-    	"5",
-	    "6",
-	    "7",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
     	"8",
     	"9",
-    	"10",
-	    "11",
-	    "12",
-	    "13",
+        "10",
+        "11",
+        "12",
+        "13",
     ],
     nargs="+",
     metavar="<preset/s>",
@@ -209,9 +209,9 @@ general_args.add_argument(
     "Example: -vf bwdif=mode=0,crop=1920:800:0:140",
 )
 
-# FFmpeg Video Filter(s)
+# SVT-AV1 film-grain
 general_args.add_argument(
-    "--svtav1-params",
+    "--film-grain",
     type=str,
-    help="Add SVT-AV1 parameters",
+    help="Add film-grain",
 )

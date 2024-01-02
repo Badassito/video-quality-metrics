@@ -12,10 +12,6 @@ class EncodingArguments:
         self._outfile = outfile
         self._base_ffmpeg_arguments = ["-i", self._infile]
 
-    # libaom-av1 "cpu-used" option.
-    def av1_cpu_used(self, value):
-        self._av1_cpu_used = value
-
     def preset(self, value):
         self._preset = value
 
@@ -36,27 +32,17 @@ class EncodingArguments:
             "-map",
             "0:V",
             "-c:v",
-            "libaom-av1" if self._encoder == "libaom-av1" else f"lib{self._encoder}",
+            f"{self._encoder}",
             "-crf",
             self._crf,
         ]
 
-        if self._encoder == "libaom-av1":
-            encoding_arguments = base_encoding_arguments + [
-                "-b:v",
-                "0",
-                "-cpu-used",
-                self._av1_cpu_used,
-                *self._video_filters,
-                self._outfile,
-            ]
-        else:
-            encoding_arguments = base_encoding_arguments + [
-                "-preset",
-                self._preset,
-                *self._video_filters,
-                self._outfile,
-            ]
+        encoding_arguments = base_encoding_arguments + [
+            "-preset",
+            self._preset,
+            *self._video_filters,
+            self._outfile,
+        ]
 
         return self._base_ffmpeg_arguments + encoding_arguments
 

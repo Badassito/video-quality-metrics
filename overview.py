@@ -82,6 +82,8 @@ def create_clips(video_path, output_folder, interval_seconds, clip_length):
                 "0",
                 "-preset",
                 "ultrafast",
+                "-pix_fmt",
+                "yuv420p10le",
                 clip_output_path,
             ]
             subprocess.run(subprocess_cut_args)

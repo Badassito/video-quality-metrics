@@ -1,0 +1,106 @@
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[main.py] Video Quality Metrics
+GitHub.com/CrypticSignal/video-quality-metrics
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[main.py] Here's some information about the original video:
+[main.py] Filename: k.mp4
+[main.py] Bitrate: 1.1789 Mbps
+[main.py] Framerate: 30000/1001 (29.97002997002997) FPS
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[overview] Overview mode activated.
+[overview] Creating a 1 second clip every 600 seconds from k.mp4...
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[overview] Creating clip 1 which starts at 00:10:00...
+[overview] Creating clip 2 which starts at 00:20:00...
+[overview] Creating clip 3 which starts at 00:30:00...
+[overview] Creating clip 4 which starts at 00:40:00...
+[overview] Creating clip 5 which starts at 00:50:00...
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[overview] Concatenating the clips to create the overview video...
+[overview] Done!
+[overview] The clips have been deleted as they are no longer needed.
+[overview] Overview Video: 1-600 (ClipLength-IntervalSeconds).mp4
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[main.py] CRF comparison mode activated.
+[main.py] CRF values 11, 14, 17, 20, 23, 26 will be compared and the 8 preset will be used.
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[main.py] | CRF 11 |
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[factory] [DEBUG] Running the following command:
+ffmpeg -progress - -nostats -loglevel warning -y -i (k.mp4)\1-600 (ClipLength-IntervalSeconds).mp4 -map 0:V -c:v libsvtav1 -crf 11 -preset 8 (k.mp4)/CRF Comparison/CRF 11\CRF 11.mp4
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[encode_video.py] Converting the video using CRF 11...
+[encode_video.py] Done!
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[factory] [DEBUG] Running the following command:
+ffmpeg -progress - -nostats -loglevel warning -y -r 30000/1001 -i (k.mp4)/CRF Comparison/CRF 11\CRF 11.mp4 -r 30000/1001 -i (k.mp4)\1-600 (ClipLength-IntervalSeconds).mp4 -map 0:V -map 1:V -lavfi [0:v]setpts=PTS-STARTPTS[dist];[1:v]setpts=PTS-STARTPTS[ref];[dist][ref]libvmaf=
+    model='path=vmaf_models/vmaf_v0.6.1.json':log_fmt=json:log_path='(k.mp4)/CRF Comparison/CRF 11/Metrics of each frame.json':n_subsample=1:n_threads=8:feature='name=psnr'
+     -f null -
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[libvmaf] Calculating the VMAF and PSNR achieved with CRF 11...
+[libvmaf] Done!
+[save_metrics] Creating VMAF graph...
+[save_metrics] Creating PSNR graph...
+[save_metrics] (k.mp4)/CRF Comparison\Table.txt has been updated.
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[main.py] | CRF 14 |
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[factory] [DEBUG] Running the following command:
+ffmpeg -progress - -nostats -loglevel warning -y -i (k.mp4)\1-600 (ClipLength-IntervalSeconds).mp4 -map 0:V -c:v libsvtav1 -crf 14 -preset 8 (k.mp4)/CRF Comparison/CRF 14\CRF 14.mp4
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[encode_video.py] Converting the video using CRF 14...
+[encode_video.py] Done!
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[factory] [DEBUG] Running the following command:
+ffmpeg -progress - -nostats -loglevel warning -y -r 30000/1001 -i (k.mp4)/CRF Comparison/CRF 14\CRF 14.mp4 -r 30000/1001 -i (k.mp4)\1-600 (ClipLength-IntervalSeconds).mp4 -map 0:V -map 1:V -lavfi [0:v]setpts=PTS-STARTPTS[dist];[1:v]setpts=PTS-STARTPTS[ref];[dist][ref]libvmaf=
+    model='path=vmaf_models/vmaf_v0.6.1.json':log_fmt=json:log_path='(k.mp4)/CRF Comparison/CRF 14/Metrics of each frame.json':n_subsample=1:n_threads=8:feature='name=psnr'
+     -f null -
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[libvmaf] Calculating the VMAF and PSNR achieved with CRF 14...
+[libvmaf] Done!
+[save_metrics] Creating VMAF graph...
+[save_metrics] Creating PSNR graph...
+[save_metrics] (k.mp4)/CRF Comparison\Table.txt has been updated.
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[main.py] | CRF 17 |
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[factory] [DEBUG] Running the following command:
+ffmpeg -progress - -nostats -loglevel warning -y -i (k.mp4)\1-600 (ClipLength-IntervalSeconds).mp4 -map 0:V -c:v libsvtav1 -crf 17 -preset 8 (k.mp4)/CRF Comparison/CRF 17\CRF 17.mp4
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[encode_video.py] Converting the video using CRF 17...
+[encode_video.py] Done!
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[factory] [DEBUG] Running the following command:
+ffmpeg -progress - -nostats -loglevel warning -y -r 30000/1001 -i (k.mp4)/CRF Comparison/CRF 17\CRF 17.mp4 -r 30000/1001 -i (k.mp4)\1-600 (ClipLength-IntervalSeconds).mp4 -map 0:V -map 1:V -lavfi [0:v]setpts=PTS-STARTPTS[dist];[1:v]setpts=PTS-STARTPTS[ref];[dist][ref]libvmaf=
+    model='path=vmaf_models/vmaf_v0.6.1.json':log_fmt=json:log_path='(k.mp4)/CRF Comparison/CRF 17/Metrics of each frame.json':n_subsample=1:n_threads=8:feature='name=psnr'
+     -f null -
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[libvmaf] Calculating the VMAF and PSNR achieved with CRF 17...
+[libvmaf] Done!
+[save_metrics] Creating VMAF graph...
+[save_metrics] Creating PSNR graph...
+[save_metrics] (k.mp4)/CRF Comparison\Table.txt has been updated.
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[main.py] | CRF 20 |
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[factory] [DEBUG] Running the following command:
+ffmpeg -progress - -nostats -loglevel warning -y -i (k.mp4)\1-600 (ClipLength-IntervalSeconds).mp4 -map 0:V -c:v libsvtav1 -crf 20 -preset 8 (k.mp4)/CRF Comparison/CRF 20\CRF 20.mp4
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[encode_video.py] Converting the video using CRF 20...
+[encode_video.py] Done!
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[factory] [DEBUG] Running the following command:
+ffmpeg -progress - -nostats -loglevel warning -y -r 30000/1001 -i (k.mp4)/CRF Comparison/CRF 20\CRF 20.mp4 -r 30000/1001 -i (k.mp4)\1-600 (ClipLength-IntervalSeconds).mp4 -map 0:V -map 1:V -lavfi [0:v]setpts=PTS-STARTPTS[dist];[1:v]setpts=PTS-STARTPTS[ref];[dist][ref]libvmaf=
+    model='path=vmaf_models/vmaf_v0.6.1.json':log_fmt=json:log_path='(k.mp4)/CRF Comparison/CRF 20/Metrics of each frame.json':n_subsample=1:n_threads=8:feature='name=psnr'
+     -f null -
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[utils] ------------------------------------------------------------------------------------------------------------------------
+[libvmaf] Calculating the VMAF and PSNR achieved with CRF 20...
+[utils] [KeyboardInterrupt] FFmpeg process killed. Exiting Video Quality Metrics.
